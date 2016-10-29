@@ -10,6 +10,8 @@ namespace BlackJack.model
         private Deck m_deck = null;
         private const int g_maxScore = 21;
 
+        private List<Card> m_hand = new List<Card>();
+
         private rules.INewGameStrategy m_newGameRule;
         private rules.IHitStrategy m_hitRule;
 
@@ -46,6 +48,40 @@ namespace BlackJack.model
             return false;
         }
 
+        public bool Stand()
+        {
+            if (m_deck != null )
+            {
+                ShowHand();
+                while (m_hitRule.DoHit(this))
+                {
+                    m_hitRule.DoHit(this);
+                    //return true;
+
+                    Card c = m_deck.GetCard();
+
+                    c.Show(true);
+                    DealCard(c);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public new void ShowHand()
+        {
+            foreach (Card c in GetHand())
+            {
+                c.Show(true);
+            }
+        }
+
+        public new IEnumerable<Card> GetHand()
+        {
+            return m_hand.Cast<Card>();
+        }
+        
+
         public bool IsDealerWinner(Player a_player)
         {
             if (a_player.CalcScore() > g_maxScore)
@@ -67,5 +103,7 @@ namespace BlackJack.model
             }
             return false;
         }
+
+        
     }
 }
