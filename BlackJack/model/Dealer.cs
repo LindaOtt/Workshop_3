@@ -56,31 +56,19 @@ namespace BlackJack.model
                 while (m_hitRule.DoHit(this))
                 {
                     m_hitRule.DoHit(this);
-                    //return true;
+                    
 
                     Card c = m_deck.GetCard();
 
                     c.Show(true);
                     DealCard(c);
+
+                    return true;
                 }
                 return true;
             }
             return false;
         }
-
-        public new void ShowHand()
-        {
-            foreach (Card c in GetHand())
-            {
-                c.Show(true);
-            }
-        }
-
-        public new IEnumerable<Card> GetHand()
-        {
-            return m_hand.Cast<Card>();
-        }
-        
 
         public bool IsDealerWinner(Player a_player)
         {
