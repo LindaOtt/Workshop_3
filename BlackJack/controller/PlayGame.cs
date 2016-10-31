@@ -19,22 +19,45 @@ namespace BlackJack.controller
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
             }
 
+
+            //Get int input from view
             int input = a_view.GetInput();
 
-            if (input == 'p')
-            {
-                a_game.NewGame();
-            }
-            else if (input == 'h')
-            {
-                a_game.Hit();
-            }
-            else if (input == 's')
-            {
-                a_game.Stand();
-            }
+            //Store it in model
+            a_game.Input = input;
 
-            return input != 'q';
+            //Change int input into string
+            char inputCharacter = (char)input;
+            string inputString = inputCharacter.ToString();
+
+            if (inputString != "q")
+            {
+                Console.WriteLine("Inputstring is {0}", inputString);
+                if (inputString == "p")
+                {
+                    Console.WriteLine("Input is new game");
+                    a_game.NewGame();
+                    return true;
+                }
+                if (inputString == "h")
+                {
+                    Console.WriteLine("Input is hit.");
+                    a_game.Hit();
+                    return true;
+                }
+                if (inputString == "s")
+                {
+                    Console.WriteLine("Input is stand.");
+                    a_game.Stand();
+                    return true;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
     }
 }

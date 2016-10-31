@@ -20,6 +20,13 @@ namespace BlackJack.view
             return System.Console.In.Read();
         }
 
+        public string getStringFromInt(int input)
+        {
+            char character = (char)input;
+            string text = character.ToString();
+            return text;
+        }
+
         public void DisplayCard(model.Card a_card)
         {
             System.Console.WriteLine("{0} of {1}", a_card.GetValue(), a_card.GetColor());

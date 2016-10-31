@@ -9,6 +9,7 @@ namespace BlackJack.model
     {
         private model.Dealer m_dealer;
         private model.Player m_player;
+        private int input;
 
         public Game()
         {
@@ -61,6 +62,18 @@ namespace BlackJack.model
         public int GetPlayerScore()
         {
             return m_player.CalcScore();
+        }
+
+        public int Input
+        {
+            get
+            {
+                return input;
+            }
+            set
+            {
+                input = value;
+            }
         }
     }
 }

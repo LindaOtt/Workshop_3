@@ -63,7 +63,7 @@ namespace BlackJack.model
                     c.Show(true);
                     DealCard(c);
 
-                    return true;
+                    //return true;
                 }
                 return true;
             }

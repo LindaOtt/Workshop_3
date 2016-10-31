@@ -18,6 +18,7 @@ namespace BlackJack.view
         {
             return System.Console.In.Read();
         }
+       
         public void DisplayCard(model.Card a_card)
         {
             if (a_card.GetColor() == model.Card.Color.Hidden)
