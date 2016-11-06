@@ -12,6 +12,7 @@ namespace BlackJack.model.rules
         public bool DoHit(model.Player a_dealer)
         {
             return a_dealer.CalcScore() < g_hitLimit;
+
         }
     }
 }

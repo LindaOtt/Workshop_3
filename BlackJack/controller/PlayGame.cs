@@ -32,22 +32,19 @@ namespace BlackJack.controller
 
             if (inputString != "q")
             {
-                Console.WriteLine("Inputstring is {0}", inputString);
+                
                 if (inputString == "p")
                 {
-                    Console.WriteLine("Input is new game");
                     a_game.NewGame();
                     return true;
                 }
                 if (inputString == "h")
                 {
-                    Console.WriteLine("Input is hit.");
                     a_game.Hit();
                     return true;
                 }
                 if (inputString == "s")
                 {
-                    Console.WriteLine("Input is stand.");
                     a_game.Stand();
                     return true;
                 }
