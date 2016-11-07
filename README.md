@@ -1,1 +1,1 @@
-# Did not have time to finish workshop before deadline. Currently working on "Soft 17" variant.
+# Did not have time to finish workshop before deadline. Still need to implement the "Observer" pattern and update diagram.
