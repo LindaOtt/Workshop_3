@@ -1,1 +1,1 @@
-# Did not have time to finish workshop before deadline. Still need to implement the "Observer" pattern and update diagram.
+# Workshop 3

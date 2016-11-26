@@ -54,13 +54,8 @@ namespace BlackJack.model
                 while (m_hitRule.DoHit(this))
                 {
                     m_hitRule.DoHit(this);
-                    
 
-                    Card c = m_deck.GetCard();
-
-                    c.Show(true);
-                    DealCard(c);
-
+                    GetCardFromDeckAndDealIt(this, true);
                 }
                 return true;
             }
