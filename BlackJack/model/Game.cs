@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BlackJack.view;
 
 namespace BlackJack.model
 {
@@ -64,6 +65,7 @@ namespace BlackJack.model
             return m_player.CalcScore();
         }
 
+        /*
         public int Input
         {
             get
@@ -74,6 +76,18 @@ namespace BlackJack.model
             {
                 input = value;
             }
+        }
+        */
+
+        public void AddSubscribers(IObserver a_subscriber)
+        {
+            m_player.AddSubscribers(a_subscriber);
+            m_dealer.AddSubscribers(a_subscriber);
+        }
+
+        public int getInput(IView a_view)
+        {
+            return a_view.GetInput();
         }
     }
 }

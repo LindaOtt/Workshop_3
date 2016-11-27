@@ -7,6 +7,8 @@ namespace BlackJack.model
 {
     class Dealer : Player
     {
+        private List<BlackJack.view.IView> observers = new List<BlackJack.view.IView>();
+
         private Deck m_deck = null;
         private const int g_maxScore = 21;
 
@@ -90,5 +92,6 @@ namespace BlackJack.model
             c.Show(visibility);
             a_player.DealCard(c);
         }
+
     }
 }

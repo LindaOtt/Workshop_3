@@ -2,12 +2,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using BlackJack.model;
+using BlackJack.view;
 
 namespace BlackJack.controller
 {
-    class PlayGame
+    class PlayGame : IObserver
     {
-        public bool Play(model.Game a_game, view.IView a_view)
+
+        private Game a_game;
+        private IView a_view;
+
+        public PlayGame(model.Game a_game, view.IView a_view)
+        {
+            this.a_game = a_game;
+            this.a_view = a_view;
+
+            this.a_game.AddSubscribers(this);
+        }
+
+
+        public void Update()
+        {
+            Thread.Sleep(1500);
+            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
+            Thread.Sleep(1500);
+            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+            Thread.Sleep(1000);
+
+            if (a_game.IsGameOver())
+            {
+                a_view.DisplayGameOver(a_game.IsDealerWinner());
+            }
+        }
+        
+
+        public bool Play()
         {
             a_view.DisplayWelcomeMessage();
             
@@ -21,10 +52,10 @@ namespace BlackJack.controller
 
 
             //Get int input from view
-            int input = a_view.GetInput();
+            int input = a_game.getInput(a_view);
 
             //Store it in model
-            a_game.Input = input;
+            //a_game.Input = input;
 
             //Change int input into string
             char inputCharacter = (char)input;

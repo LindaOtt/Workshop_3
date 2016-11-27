@@ -7,11 +7,15 @@ namespace BlackJack.model
 {
     class Player
     {
+        private List<BlackJack.model.IObserver> subscribers = new List<BlackJack.model.IObserver>();
+
         private List<Card> m_hand = new List<Card>();
+
 
         public void DealCard(Card a_card)
         {
             m_hand.Add(a_card);
+            Notify();
         }
 
         public IEnumerable<Card> GetHand()
@@ -29,6 +33,7 @@ namespace BlackJack.model
             foreach (Card c in GetHand())
             {
                 c.Show(true);
+                Notify();
             }
         }
 
@@ -59,6 +64,17 @@ namespace BlackJack.model
             return score;
         }
 
-        
+        public void AddSubscribers(IObserver a_subscriber)
+        {
+            subscribers.Add(a_subscriber);
+        }
+
+        private void Notify()
+        {
+            foreach (IObserver a_subscriber in subscribers)
+            {
+                a_subscriber.Update();
+            }
+        }
     }
 }
