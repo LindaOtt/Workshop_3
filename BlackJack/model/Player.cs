@@ -10,11 +10,12 @@ namespace BlackJack.model
         //private List<BlackJack.model.IObserver> subscribers = new List<BlackJack.model.IObserver>();
 
         private List<Card> m_hand = new List<Card>();
-
+        private List<Observer> m_observers = new List<Observer>();
 
         public void DealCard(Card a_card)
         {
             m_hand.Add(a_card);
+            CallObservers();
             //Notify();
         }
 
@@ -62,6 +63,19 @@ namespace BlackJack.model
             }
 
             return score;
+        }
+
+        public void CallObservers()
+        {
+            foreach (Observer value in m_observers)
+            {
+                value.Update();
+            }
+        }
+
+        public void AddObserver(Observer obj)
+        {
+            m_observers.Add(obj);
         }
 
         /*

@@ -8,7 +8,7 @@ using BlackJack.view;
 
 namespace BlackJack.controller
 {
-    class PlayGame
+    class PlayGame : Observer
     {
 
         private Game a_game;
@@ -19,7 +19,16 @@ namespace BlackJack.controller
             this.a_game = a_game;
             this.a_view = a_view;
 
+            a_game.AddObserver(this);
+
             //this.a_game.AddSubscribers(this);
+        }
+
+        public void Update()
+        {
+            a_view.delay();
+            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
+            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
         }
 
         /*
@@ -37,7 +46,7 @@ namespace BlackJack.controller
             }
         }
         */
-        
+
 
         public bool Play()
         {

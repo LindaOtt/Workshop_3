@@ -18,5 +18,7 @@ namespace BlackJack.view
         bool WantToHit(int input);
         bool WantToStand(int input);
         bool WantToQuit(int input);
+
+        void delay();
     }
 }

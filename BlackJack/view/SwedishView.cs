@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace BlackJack.view
 {
@@ -81,6 +82,13 @@ namespace BlackJack.view
         public bool WantToQuit(int input)
         {
             return input == 'q';
+        }
+
+
+        public void delay()
+        {
+            Thread.Sleep(1000);
+            //DisplayStart();
         }
 
     }
