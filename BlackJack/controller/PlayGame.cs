@@ -8,7 +8,7 @@ using BlackJack.view;
 
 namespace BlackJack.controller
 {
-    class PlayGame : IObserver
+    class PlayGame
     {
 
         private Game a_game;
@@ -19,10 +19,10 @@ namespace BlackJack.controller
             this.a_game = a_game;
             this.a_view = a_view;
 
-            this.a_game.AddSubscribers(this);
+            //this.a_game.AddSubscribers(this);
         }
 
-
+        /*
         public void Update()
         {
             Thread.Sleep(1500);
@@ -36,6 +36,7 @@ namespace BlackJack.controller
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
             }
         }
+        */
         
 
         public bool Play()
@@ -52,12 +53,29 @@ namespace BlackJack.controller
 
 
             //Get int input from view
-            int input = a_game.getInput(a_view);
+            int input = a_view.GetInput();
 
-            //Store it in model
-            //a_game.Input = input;
+            if (a_view.WantToPlay(input))
+            {
+                a_game.NewGame();
+            }
+            else if (a_view.WantToHit(input))
+            {
+                a_game.Hit();
+            }
+            else if (a_view.WantToStand(input))
+            {
+                a_game.Stand();
+            }
+            else if (a_view.WantToQuit(input))
+            {
+                return false;
+            }
+
+            return true;
 
             //Change int input into string
+            /*
             char inputCharacter = (char)input;
             string inputString = inputCharacter.ToString();
 
@@ -85,7 +103,8 @@ namespace BlackJack.controller
             {
                 return false;
             }
-            
+            */
+
         }
     }
 }

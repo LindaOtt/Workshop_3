@@ -10,7 +10,6 @@ namespace BlackJack.model
     {
         private model.Dealer m_dealer;
         private model.Player m_player;
-        private int input;
 
         public Game()
         {
@@ -40,8 +39,6 @@ namespace BlackJack.model
 
         public bool Stand()
         {
-            // TODO: Implement this according to Game_Stand.sequencediagram
-
             return m_dealer.Stand();
         }
 
@@ -64,30 +61,14 @@ namespace BlackJack.model
         {
             return m_player.CalcScore();
         }
-
+        
         /*
-        public int Input
-        {
-            get
-            {
-                return input;
-            }
-            set
-            {
-                input = value;
-            }
-        }
-        */
-
         public void AddSubscribers(IObserver a_subscriber)
         {
             m_player.AddSubscribers(a_subscriber);
             m_dealer.AddSubscribers(a_subscriber);
         }
-
-        public int getInput(IView a_view)
-        {
-            return a_view.GetInput();
-        }
+        */
+        
     }
 }

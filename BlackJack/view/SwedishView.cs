@@ -66,5 +66,22 @@ namespace BlackJack.view
             System.Console.WriteLine("");
         }
 
+        public bool WantToPlay(int input)
+        {
+            return input == 'p';
+        }
+        public bool WantToHit(int input)
+        {
+            return input == 'h';
+        }
+        public bool WantToStand(int input)
+        {
+            return input == 's';
+        }
+        public bool WantToQuit(int input)
+        {
+            return input == 'q';
+        }
+
     }
 }
